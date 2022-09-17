@@ -1,0 +1,112 @@
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  | blib2to3
+  | tests/data
+  | profiling
+)/
+'''
+preview = false
+
+[build-system]
+requires = ["setuptools>=45.0", "setuptools_scm[toml]>=6.3.1", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+markers = [
+  "incompatible_with_mypyc: run when testing mypyc compiled black"
+]
+
+[tool.mypy]
+python_version = 3.8
+exclude = ["scratch", "outputs", "data"]
+ignore_missing_imports = true
+disable_error_code = ["return-value", "return"]
+show_error_codes = true
+
+[tool.pydocstyle]
+convention = "numpy"
+match_dir = "^(?!(scratch|outputs|data)).*"
+
+[tool.pyright]
+pythonVersion = "3.8"
+pythonPlatform = "Linux"
+exclude = ["scratch", "outputs", "data"]
+executionEnvironments = [
+  {"root" = "src", "pythonVersion" = "3.8"}
+]
+typeCheckingMode = "strict"
+reportMissingImports = true
+reportMissingTypeStubs = false
+reportOptionalImports = true
+strictListInference = true
+strictDictionaryInference = true
+strictSetInference = true
+strictParameterNoneValue = true
+reportGeneralTypeIssues = true
+reportPropertyTypeMismatch = true
+reportFunctionMemberAcces = true
+reportMissingImport = true
+reportMissingModuleSource = true
+reportImportCycles = true
+reportUnusedImport = true
+reportUnusedClass = true
+reportUnusedFunction = true
+reportUnusedVariable = true
+reportDuplicateImport = true
+reportWildcardImportFromLibrary = true
+reportOptionalSubscript = true
+reportOptionalMemberAccess = true
+reportOptionalCall = true
+reportOptionalIterable = true
+reportOptionalContextManager = true
+reportOptionalOperand = true
+reportTypedDictNotRequiredAccess = true
+reportUntypedFunctionDecorator = true
+reportUntypedClassDecorator = true
+reportUntypedBaseClass = true
+reportUntypedNamedTuple = true
+reportPrivateUsage = true
+reportTypeCommentUsage = true
+reportPrivateImportUsage = true
+reportConstantRedefinition = true
+reportIncompatibleMethodOverride = true
+reportIncompatibleVariableOverride = true
+reportInconsistentConstructor = true
+reportOverlappingOverload = true
+reportMissingSuperCall = true
+reportUninitializedInstanceVariable = true
+reportInvalidStringEscapeSequence = true
+reportUnknownParameterType = true
+reportUnknownArgumentType = false
+reportUnknownLambdaType = true
+reportUnknownVariableType = false
+reportUnknownMemberType = false
+reportMissingParameterType = true
+reportMissingTypeArgument = true
+reportInvalidTypeVarUse = true
+reportCallInDefaultInitializer = true
+reportUnnecessaryIsInstance = true
+reportUnnecessaryCast = true
+reportUnnecessaryComparison = true
+reportUnnecessaryContains = true
+reportAssertAlwaysTrue = true
+reportSelfClsParameterName = true
+reportImplicitStringConcatenation = true
+reportUndefinedVariable = true
+reportUnboundVariable = true
+reportInvalidStubStatemen = true
+reportIncompleteStub = true
+reportUnsupportedDunderAll = true
+reportUnusedCallResult = false
+reportUnusedCoroutine = true
+reportUnusedExpression = true
+reportUnnecessaryTypeIgnoreComment = true
+reportMatchNotExhaustive = true
+
+[tool.vulture]
+min_confidence = 80
+paths = ["src", "tests"]

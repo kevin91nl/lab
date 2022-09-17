@@ -1,0 +1,14 @@
+-r requirements.txt
+
+black~=22.8.0
+hypothesis~=6.54.4
+pyflakes~=2.4.0
+pre-commit~=2.16.0
+pydocstyle~=6.1.1
+pydoctest~=0.1.16
+pyright~=1.1.268
+pytest~=7.1.2
+toml~=0.10.2
+radon~=5.1.0
+vulture~=2.5
+sklearn~=0.0
